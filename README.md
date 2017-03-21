@@ -1,11 +1,16 @@
 # discord-draw
 Basic drawing application for Discord users.
 
+git clone
+
+    git clone https://github.com/Mattwen/discord-draw.git
+    cd discord-draw
+    sudo chmod +x server.js
+    
 
 install required npm packages
 
     npm install
-    
     
 check to see if it's running properly
 
