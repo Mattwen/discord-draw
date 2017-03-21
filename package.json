@@ -1,0 +1,15 @@
+{
+  "name": "draw-together",
+  "version": "1.0.0",
+  "description": "Draw with your friends",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Wenger",
+  "dependencies" : {
+      "express": "4.x",
+      "socket.io": "*"
+   },
+  "license": "ISC"
+}
