@@ -14,33 +14,26 @@ console.log("Server running on 127.0.0.1:8080");
 // array of all lines drawn
 var line_history = [];
 
-
 // event-handler for new incoming connections
 io.on('connection', function (socket) {
-
     // first send the history to the new client
     for (var i in line_history) {
         socket.emit('draw_line', {size: line_history[i].Size, color: line_history[i].Color,  line: line_history[i].Data});
-        console.log(line_history[i]);
+        //console.log(line_history[i]);
     }
-
     // add handler for message type "draw_line".
     socket.on('draw_line', function (data) {
-        // add received line to history 
 
+        // add input to line_history objects
         var input = {
-            'Size': data.size,
-            'Color': data.color,
-            'Data': data.line 
+            'Size': data.size, // size of the brush
+            'Color': data.color, // color of the line
+            'Data': data.line // position of the line
         }
-
-        var s = {'Size': data.size };
-        var c = {'Color': data.color };
-        var d = {'Data': data.line };
-
+        // push objects to add
         line_history.push(input);
+
         // send line to all clients
         io.emit('draw_line', { size: data.size, color: data.color, line: data.line });
-
     });
 });
