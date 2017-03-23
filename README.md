@@ -27,3 +27,13 @@ make it start on sytsem reboot
     
     do later
     
+# TO DO
+
+    cache lines in browser
+    upload pictures
+    add shapes
+    mobile support
+    
+    
+    
+    
