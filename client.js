@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             else if (mode == 'orange') {
-                  var color = '#ff9933';
+                  var color = '#ff6600';
                   var size = adjustedSize;
             }
             else if (mode == 'purple') {
@@ -90,6 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else if (mode == 'grey') {
                   var color = '#a6a6a6';
+                  var size = adjustedSize;
+            }
+            else if (mode == 'yellow') {
+                  var color = '#ffff33';
                   var size = adjustedSize;
             }
             else {
@@ -157,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var size = adjustedSize;
                   }
                   else if (mode == 'orange') {
-                        var color = '#ff9933';
+                        var color = '#ff6600';
                         var size = adjustedSize;
                   }
                   else if (mode == 'purple') {
@@ -180,6 +184,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         var color = '#a6a6a6';
                         var size = adjustedSize;
                   }
+                  else if (mode == 'yellow') {
+                  var color = '#ffff33';
+                  var size = adjustedSize;
+            }
                   else {
                         var size = adjustedSize;
                   }
@@ -204,6 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
             $("#green").click(function () { mode = "green"; });
             $("#blue").click(function () { mode = "blue"; });
             $("#orange").click(function () { mode = "orange"; });
+            $("#yellow").click(function () { mode = "yellow"; });
             $("#purple").click(function () { mode = "purple"; });
             $("#cyan").click(function () { mode = "cyan"; });
             $("#pink").click(function () { mode = "pink"; });
