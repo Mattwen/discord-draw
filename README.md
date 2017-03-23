@@ -28,6 +28,7 @@ make it start on sytsem reboot
     do later
     
 TODO
+
     cache lines in browser
     upload pictures
     add shapes
