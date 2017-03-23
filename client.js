@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else {
                   var size = adjustedSize;
+                  var color = data.color;
             }
 
             // set the context color to context variables
@@ -132,6 +133,23 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
             // check if the user is drawing
             if (mouse.click && mouse.move && mouse.pos_prev) {
+
+                  $("#pen").click(function () { adjustedSize = 1; mode = "pen"; });
+            $("#eraser").click(function () { adjustedSize = 1; mode = "eraser"; });
+
+            // colors
+            $("#red").click(function () { adjustedSize = 1; mode = "red"; });
+            $("#green").click(function () { mode = "green"; });
+            $("#blue").click(function () { mode = "blue"; });
+            $("#orange").click(function () { mode = "orange"; });
+            $("#yellow").click(function () { mode = "yellow"; });
+            $("#purple").click(function () { mode = "purple"; });
+            $("#cyan").click(function () { mode = "cyan"; });
+            $("#pink").click(function () { mode = "pink"; });
+            $("#brown").click(function () { mode = "brown"; });
+            $("#grey").click(function () { mode = "grey"; });
+
+
 
                   document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
                   // send line to to the server
@@ -185,13 +203,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         var size = adjustedSize;
                   }
                   else if (mode == 'yellow') {
-                  var color = '#ffff33';
-                  var size = adjustedSize;
-            }
+                        var color = '#ffff33';
+                        var size = adjustedSize;
+                  }
                   else {
                         var size = adjustedSize;
                   }
-                  
+
                   // emit to all users
                   socket.emit('draw_line', { size: size, color: color, line: [mouse.pos, mouse.pos_prev] });
                   globalSize = size;
@@ -204,24 +222,10 @@ document.addEventListener("DOMContentLoaded", function () {
       mainLoop();
 
       $(document).ready(function () {
-            $("#pen").click(function () { adjustedSize = 1; mode = "pen"; });
-            $("#eraser").click(function () { adjustedSize = 1; mode = "eraser"; });
-
-            // colors
-            $("#red").click(function () { adjustedSize = 1; mode = "red"; });
-            $("#green").click(function () { mode = "green"; });
-            $("#blue").click(function () { mode = "blue"; });
-            $("#orange").click(function () { mode = "orange"; });
-            $("#yellow").click(function () { mode = "yellow"; });
-            $("#purple").click(function () { mode = "purple"; });
-            $("#cyan").click(function () { mode = "cyan"; });
-            $("#pink").click(function () { mode = "pink"; });
-            $("#brown").click(function () { mode = "brown"; });
-            $("#grey").click(function () { mode = "grey"; });
-
+            
             // arrows
-            $("#smaller").click(function () {if(adjustedSize >=5 ) adjustedSize -= 5; });
-            $("#larger").click(function () {if(adjustedSize <= 150) adjustedSize += 5; });
+            $("#smaller").click(function () { if (adjustedSize >= 5) adjustedSize -= 5; });
+            $("#larger").click(function () { if (adjustedSize <= 150) adjustedSize += 5; });
 
 
 
