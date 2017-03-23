@@ -27,7 +27,7 @@ make it start on sytsem reboot
     
     do later
     
-TODO
+# TO DO
 
     cache lines in browser
     upload pictures
