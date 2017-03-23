@@ -38,16 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Begin path for line and initilize context      
             context.beginPath();
 
+            // initilize the client side context variables
             var line = data.line;
             var color = data.color;
             var size = data.size;
             var adjustedSize = size;
 
-
-            //var size = adjustedSize;
-            //var color = adjustedColor;
-
-            // set the context color to context variables
+            // set the canvas context color to context variables
             context.lineWidth = size;
             context.fillStyle = color;
             context.strokeStyle = color;
@@ -66,21 +63,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       });
 
-
       // main loop, running every 25ms
       function mainLoop() {
-
-            // pen and eraser
-
             //console.log(mode);
-
             //set the global size and update the innerHTML every 25 ms
             globalSize = adjustedSize;
 
             document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
             // check if the user is drawing
             if (mouse.click && mouse.move && mouse.pos_prev) {
-
 
                   document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
                   // send line to to the server
@@ -115,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // colors change to adjustedColor global variable to prevent client side fuckery
             $("#red").click(function () { mode = "red"; adjustedColor = "#ff4d4d"});
             $("#green").click(function () { mode = "green"; adjustedColor = "#5cd65c"});
-            $("#blue").click(function () { mode = "blue"; adjustedColor = "#ff4d4d"});
+            $("#blue").click(function () { mode = "blue"; adjustedColor = "#4295f4"});
             $("#orange").click(function () { mode = "orange"; adjustedColor = "#ff6600"});
             $("#yellow").click(function () { mode = "yellow"; adjustedColor = "#ffff33"});
             $("#purple").click(function () { mode = "purple"; adjustedColor = "#9966ff"});
