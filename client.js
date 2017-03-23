@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var height = window.innerHeight;
       var socket = io.connect();
       var mode = '';
+      var adjustedColor = '';
       var adjustedSize = 1;
       var globalSize = 1;
 
@@ -43,63 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
             var adjustedSize = size;
 
 
-            //console.log(data);
-
-            if (mode == 'pen') {
-                  var color = '#000000';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'eraser') {
-                  var color = '#ffffff';
-                  var size = adjustedSize;
-            }
-
-            // Colors
-            else if (mode == 'red') {
-                  var color = '#ff4d4d';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'green') {
-                  var color = '#5cd65c';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'blue') {
-                  var color = '#66a3ff';
-                  var size = adjustedSize;
-            }
-
-            else if (mode == 'orange') {
-                  var color = '#ff6600';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'purple') {
-                  var color = '#9966ff';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'cyan') {
-                  var color = '#70dbdb';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'pink') {
-                  var color = '#ff66cc';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'brown') {
-                  var color = '#ac7339';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'grey') {
-                  var color = '#a6a6a6';
-                  var size = adjustedSize;
-            }
-            else if (mode == 'yellow') {
-                  var color = '#ffff33';
-                  var size = adjustedSize;
-            }
-            else {
-                  var size = adjustedSize;
-                  var color = data.color;
-            }
+            //var size = adjustedSize;
+            //var color = adjustedColor;
 
             // set the context color to context variables
             context.lineWidth = size;
@@ -130,85 +76,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //set the global size and update the innerHTML every 25 ms
             globalSize = adjustedSize;
+
             document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
             // check if the user is drawing
             if (mouse.click && mouse.move && mouse.pos_prev) {
 
-                  $("#pen").click(function () { adjustedSize = 1; mode = "pen"; });
-            $("#eraser").click(function () { adjustedSize = 1; mode = "eraser"; });
-
-            // colors
-            $("#red").click(function () { adjustedSize = 1; mode = "red"; });
-            $("#green").click(function () { mode = "green"; });
-            $("#blue").click(function () { mode = "blue"; });
-            $("#orange").click(function () { mode = "orange"; });
-            $("#yellow").click(function () { mode = "yellow"; });
-            $("#purple").click(function () { mode = "purple"; });
-            $("#cyan").click(function () { mode = "cyan"; });
-            $("#pink").click(function () { mode = "pink"; });
-            $("#brown").click(function () { mode = "brown"; });
-            $("#grey").click(function () { mode = "grey"; });
-
-
 
                   document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
                   // send line to to the server
-                  var color = "#000000";
+                  // var color = "#000000";
 
                   //switch statements for colors, pen & eraser
-                  if (mode == 'pen') {
-                        var color = '#000000';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'eraser') {
-                        var color = '#ffffff';
-                        var size = adjustedSize;
-                  }
-
-                  // Colors
-                  else if (mode == 'red') {
-                        var color = '#ff4d4d';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'green') {
-                        var color = '#5cd65c';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'blue') {
-                        var color = '#66a3ff';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'orange') {
-                        var color = '#ff6600';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'purple') {
-                        var color = '#9966ff';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'cyan') {
-                        var color = '#70dbdb';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'pink') {
-                        var color = '#ff66cc';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'brown') {
-                        var color = '#ac7339';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'grey') {
-                        var color = '#a6a6a6';
-                        var size = adjustedSize;
-                  }
-                  else if (mode == 'yellow') {
-                        var color = '#ffff33';
-                        var size = adjustedSize;
-                  }
-                  else {
-                        var size = adjustedSize;
-                  }
+                  var size = adjustedSize;
+                  var color = adjustedColor;
 
                   // emit to all users
                   socket.emit('draw_line', { size: size, color: color, line: [mouse.pos, mouse.pos_prev] });
@@ -221,15 +101,28 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       mainLoop();
 
+      // client side loading
       $(document).ready(function () {
-            
+
             // arrows
             $("#smaller").click(function () { if (adjustedSize >= 5) adjustedSize -= 5; });
             $("#larger").click(function () { if (adjustedSize <= 150) adjustedSize += 5; });
 
+            // pen and eraser init
+            $("#pen").click(function () { mode = "pen"; adjustedColor = "#000000"});
+            $("#eraser").click(function () { mode = "eraser"; adjustedColor = "#ffffff"});
 
-
-
+            // colors change to adjustedColor global variable to prevent client side fuckery
+            $("#red").click(function () { mode = "red"; adjustedColor = "#ff4d4d"});
+            $("#green").click(function () { mode = "green"; adjustedColor = "#5cd65c"});
+            $("#blue").click(function () { mode = "blue"; adjustedColor = "#ff4d4d"});
+            $("#orange").click(function () { mode = "orange"; adjustedColor = "#ff6600"});
+            $("#yellow").click(function () { mode = "yellow"; adjustedColor = "#ffff33"});
+            $("#purple").click(function () { mode = "purple"; adjustedColor = "#9966ff"});
+            $("#cyan").click(function () { mode = "cyan"; adjustedColor = "#70dbdb"});
+            $("#pink").click(function () { mode = "pink"; adjustedColor = "#ff66cc"});
+            $("#brown").click(function () { mode = "brown"; adjustedColor = "#ac7339"});
+            $("#grey").click(function () { mode = "grey"; adjustedColor = "#a6a6a6"});
       });
 });
 
