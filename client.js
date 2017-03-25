@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var width = window.innerWidth;
       var height = window.innerHeight;
       var socket = io.connect();
-      var mode = '';
+
+      // GLOBAL vars that change with button click controls
       var adjustedColor = '';
       var adjustedSize = 1;
       var globalSize = 1;
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             mouse.pos.y = e.clientY / height;
             mouse.move = true;
 
-            document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
+            document.getElementById("size").innerHTML = globalSize + 'px';
       };
 
       socket.on('draw_line', function (data) {
@@ -66,18 +67,18 @@ document.addEventListener("DOMContentLoaded", function () {
       // main loop, running every 25ms
       function mainLoop() {
             //console.log(mode);
+            
             //set the global size and update the innerHTML every 25 ms
             globalSize = adjustedSize;
 
-            document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
+            document.getElementById("size").innerHTML = globalSize + 'px';
             // check if the user is drawing
             if (mouse.click && mouse.move && mouse.pos_prev) {
 
-                  document.getElementById("size").innerHTML = 'Brush size: ' + globalSize + 'px';
-                  // send line to to the server
-                  // var color = "#000000";
-
-                  //switch statements for colors, pen & eraser
+                  // Update globalSize on mouse down & move -- might be redundant
+                  document.getElementById("size").innerHTML = globalSize + 'px';
+                  
+                  // set the size and color to adjustedValues on every mouse event
                   var size = adjustedSize;
                   var color = adjustedColor;
 
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   socket.emit('draw_line', { size: size, color: color, line: [mouse.pos, mouse.pos_prev] });
                   globalSize = size;
                   mouse.move = false;
-                  console.log(globalSize);
+                  // console.log(globalSize);
             }
             mouse.pos_prev = { x: mouse.pos.x, y: mouse.pos.y };
             setTimeout(mainLoop, 25);
@@ -99,21 +100,21 @@ document.addEventListener("DOMContentLoaded", function () {
             $("#smaller").click(function () { if (adjustedSize >= 5) adjustedSize -= 5; });
             $("#larger").click(function () { if (adjustedSize <= 150) adjustedSize += 5; });
 
-            // pen and eraser init
-            $("#pen").click(function () { mode = "pen"; adjustedColor = "#000000"});
-            $("#eraser").click(function () { mode = "eraser"; adjustedColor = "#ffffff"});
+            // pen and eraser
+            $("#pen").click(function () { adjustedColor = "#000000"});
+            $("#eraser").click(function () {adjustedColor = "#ffffff"});
 
             // colors change to adjustedColor global variable to prevent client side fuckery
-            $("#red").click(function () { mode = "red"; adjustedColor = "#ff4d4d"});
-            $("#green").click(function () { mode = "green"; adjustedColor = "#5cd65c"});
-            $("#blue").click(function () { mode = "blue"; adjustedColor = "#4295f4"});
-            $("#orange").click(function () { mode = "orange"; adjustedColor = "#ff6600"});
-            $("#yellow").click(function () { mode = "yellow"; adjustedColor = "#ffff33"});
-            $("#purple").click(function () { mode = "purple"; adjustedColor = "#9966ff"});
-            $("#cyan").click(function () { mode = "cyan"; adjustedColor = "#70dbdb"});
-            $("#pink").click(function () { mode = "pink"; adjustedColor = "#ff66cc"});
-            $("#brown").click(function () { mode = "brown"; adjustedColor = "#ac7339"});
-            $("#grey").click(function () { mode = "grey"; adjustedColor = "#a6a6a6"});
+            $("#red").click(function () { adjustedColor = "#ff4d4d"});
+            $("#green").click(function () {adjustedColor = "#5cd65c"});
+            $("#blue").click(function () {  adjustedColor = "#4295f4"});
+            $("#orange").click(function () { adjustedColor = "#ff6600"});
+            $("#yellow").click(function () { adjustedColor = "#ffff33"});
+            $("#purple").click(function () { adjustedColor = "#9966ff"});
+            $("#cyan").click(function () {  adjustedColor = "#70dbdb"});
+            $("#pink").click(function () {  adjustedColor = "#ff66cc"});
+            $("#brown").click(function () {  adjustedColor = "#ac7339"});
+            $("#grey").click(function () {  adjustedColor = "#a6a6a6"});
       });
 });
 
