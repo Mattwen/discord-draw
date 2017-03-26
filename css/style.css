@@ -5,6 +5,7 @@
 
 #container {
 position: relative; 
+
 }
 #container canvas, #overlay {
   position: absolute;
@@ -14,6 +15,7 @@ left:0;
 right:0;
 margin-left:auto;
 margin-right:auto;
+
 }
 
 .outline{
@@ -30,8 +32,6 @@ margin-right:auto;
         
     background-color: rgba(0,0,0,0.8)
 }
-
-
 
 body, html{
     width: 100%;
@@ -152,12 +152,13 @@ body, html{
 
 .brush-style{
     
-    font-size: 23px;
+    font-size: 12px;
     display: inline-block;
     color: white;
     position: relative;
-    top: 7px;
-    left: 7px;
+    top: 5px;
+    left: 15px;
+    
 }
 
 

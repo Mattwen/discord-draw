@@ -14,6 +14,7 @@ console.log("Server running on 127.0.0.1:8080");
 // array of all lines drawn
 var line_history = [];
 
+
 // event-handler for new incoming connections
 io.on('connection', function (socket) {
     // first send the history to the new client
@@ -33,7 +34,13 @@ io.on('connection', function (socket) {
         // push objects to add
         line_history.push(input);
 
+        // remove the first 150 objects from the array list if the total array list exceeds 1500 entries
+        if(line_history.length >= 1500){
+            line_history.splice(0, 150);
+        }
+
         // send line to all clients
         io.emit('draw_line', { size: data.size, color: data.color, line: data.line });
+        //console.log(line_history.length);
     });
 });
