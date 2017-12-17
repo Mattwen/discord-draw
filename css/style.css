@@ -1,16 +1,16 @@
-* { 
+* {
    margin: 0;
-   padding: 0; 
+   padding: 0;
 }
 
 #container {
-position: relative; 
+position: relative;
 
 }
 #container canvas, #overlay {
   position: absolute;
-   
-width: 640px;
+
+width: 675px;
 left:0;
 right:0;
 margin-left:auto;
@@ -19,17 +19,14 @@ margin-right:auto;
 }
 
 .outline{
-    
-    border: 2px solid white;
-    border-radius: 15px/75px;
     border-top: none;
     padding: 15px;
     padding-top: 5px;
+    padding-bottom: 10px;
     background-color: black;
     -webkit-box-shadow: 0 8px 6px -6px black;
      -moz-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
-        
     background-color: rgba(0,0,0,0.8)
 }
 
@@ -38,15 +35,25 @@ body, html{
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-    
+
 }
 .draw {
    cursor: crosshair;
-   
+
 }
 
-.draw:active { 
+.draw:active {
     cursor: crosshair;
+
+}
+
+.white{
+    background-color: white;
+    height: 35px;;
+    width: 20px;
+    position: relative;
+    top: 5px;
+    display: inline-block;
 
 }
 
@@ -57,7 +64,7 @@ body, html{
     position: relative;
     top: 5px;
     display: inline-block;
-    
+
 }
 
 .black{
@@ -67,7 +74,7 @@ body, html{
     position: relative;
     top: 5px;
     display: inline-block;
-    
+
 }
 
 .green{
@@ -95,6 +102,7 @@ body, html{
     position: relative;
     top: 5px;
     display: inline-block;
+    
 }
 .purple{
     background-color: #9966ff;
@@ -112,7 +120,6 @@ body, html{
     top: 5px;
     display: inline-block;
 }
-
 .pink{
     background-color: #ff66cc;
     height: 35px;;
@@ -121,7 +128,6 @@ body, html{
     top: 5px;
     display: inline-block;
 }
-
 .brown{
     background-color: #ac7339;
     height: 35px;;
@@ -130,7 +136,6 @@ body, html{
     top: 5px;
     display: inline-block;
 }
-
 .grey{
     background-color: #a6a6a6;
     height: 35px;;
@@ -139,7 +144,6 @@ body, html{
     top: 5px;
     display: inline-block;
 }
-
 .yellow{
     background-color: #ffff33;
     height: 35px;;
@@ -148,41 +152,105 @@ body, html{
     top: 5px;
     display: inline-block;
 }
-
-
 .brush-style{
-    
-    font-size: 12px;
+
+    font-size: 18px;
     display: inline-block;
     color: white;
     position: relative;
-    top: 5px;
-    left: 15px;
-    
+    top: 0px;
+    left: 0px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 
 .button {
   display: inline-block;
-  padding: 8px 15px;
   font-size: 12px;
   cursor: pointer;
-  
+  padding: 8px 15px;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: black;
-  
+
   border: none;
-  border-radius: 5px;;
-  box-shadow: 0 5px #999;
-  border-bottom: 1px solid white;
+  border-radius: 50px;
+}
+
+.brush-button {
+  display: inline-block;
+  padding: 8px 15px;
+  cursor: pointer;
+
+  text-align: center;
+
+  outline: none;
+  background-color: #4d4d4d;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  right: 10px;
 }
 
 .button:hover {background-color: #d9d9d9}
 
+.brush-button:hover {background-color: #737373}
+
+.min-max-button:hover {background-color: #737373}
+
 .button:active {
   background-color: #d9d9d9;
-  box-shadow: 0 5px #666;
+  box-shadow: 0 3px #666;
   transform: translateY(4px);
+}
+
+.brush-button:active {
+  background-color: #808080;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+.min-max-button{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  padding-bottom: 0px;
+  text-align: center;
+  padding-top:2px;
+  outline: none;
+  background-color: #4d4d4d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  }
+  
+  .min-max-button:active {
+  background-color: #808080;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+
+}
+.current-color-indicator{
+    height: 30px;
+    width: 20px;
+    position: relative;
+    display: inline-block;
+    top: 10px;
 }

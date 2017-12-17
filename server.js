@@ -34,8 +34,8 @@ io.on('connection', function (socket) {
         // push objects to add
         line_history.push(input);
 
-        // remove the first 150 objects from the array list if the total array list exceeds 1500 entries
-        if(line_history.length >= 1500){
+        // remove the first 150 objects from the array list if the total array list exceeds 2500 entries
+        if(line_history.length >= 2500){
             line_history.splice(0, 150);
         }
 

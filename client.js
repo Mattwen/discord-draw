@@ -70,19 +70,18 @@ document.addEventListener("DOMContentLoaded", function () {
             
             //set the global size and update the innerHTML every 25 ms
             globalSize = adjustedSize;
-
+	    globalColor = adjustedColor;
             document.getElementById("size").innerHTML = globalSize + 'px';
-            // check if the user is drawing
+	    document.getElementById("current-color").style.backgroundColor = globalColor;
+	    // check if the user is drawing
             if (mouse.click && mouse.move && mouse.pos_prev) {
-
                   // Update globalSize on mouse down & move -- might be redundant
                   document.getElementById("size").innerHTML = globalSize + 'px';
-                  
-                  // set the size and color to adjustedValues on every mouse event
+                  document.getElementById("current-color").style.backgroundColor = globalColor;
+		  // set the size and color to adjustedValues on every mouse event
                   var size = adjustedSize;
                   var color = adjustedColor;
-
-                  // emit to all users
+		  // emit to all users
                   socket.emit('draw_line', { size: size, color: color, line: [mouse.pos, mouse.pos_prev] });
                   globalSize = size;
                   mouse.move = false;
@@ -97,13 +96,16 @@ document.addEventListener("DOMContentLoaded", function () {
       $(document).ready(function () {
 
             // arrows
-            $("#smaller").click(function () { if (adjustedSize >= 5) adjustedSize -= 5; });
-            $("#larger").click(function () { if (adjustedSize <= 150) adjustedSize += 5; });
-
-            // pen and eraser
+            $("#smaller").click(function () { if (adjustedSize >= 7) adjustedSize -= 7; });
+            $("#larger").click(function () { if (adjustedSize <= 150) adjustedSize += 7; });
+	    
+	    // Min and max buttons
+	    $("#min").click(function () { adjustedSize = 1; });
+            $("#max").click(function () { adjustedSize = 155; });
+	    // pen and eraser
             $("#pen").click(function () { adjustedColor = "#000000"});
             $("#eraser").click(function () {adjustedColor = "#ffffff"});
-
+	    $("#current-color").click(function () {adjustedColor});
             // colors change to adjustedColor global variable to prevent client side fuckery
             $("#red").click(function () { adjustedColor = "#ff4d4d"});
             $("#green").click(function () {adjustedColor = "#5cd65c"});

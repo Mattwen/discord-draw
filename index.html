@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Bee Server Doodle</title>
     <meta charset="utf-8">
@@ -10,21 +9,16 @@
     <script src="socket.io/socket.io.js"></script>
     <script src="client.js"></script>
 </head>
-
 <!-- o.O.O.o.O.O.o.O.O.o.O.O.o.O.O.o.O.O.o.O -->
 <!-- O.o.O.o.O.O.o.O.O.o.O.O.o.O.O.o.O. -->
 <!-- Made by Matt Wenger -->
 <!-- O.o.O.O.o.O.O.o.O.O.o.O.O.o.O. -->
 <!-- o.O.O.o.O.O.o.O.O.o.O.O.o.O.O.o.O.O.o.O -->
-
-
 <!-- For use of Bee Movie Discord Server -->
 <body>
-
     <!-- Controls for drawing, erasing, and brush size -->
-    <div class = "outline" id="overlay">
-        <button class="button" id="eraser">Eraser</button>
-        &nbsp;
+    <div class = "outline noselect" id="overlay">
+        <button class="white button" id="eraser"></button>
         <button class="black button" id="pen"></button>
         <button class="red button" id="red"></button>
         <button class="green button" id="green"></button>
@@ -36,18 +30,16 @@
         <button class="pink button" id="pink"></button>
         <button class="brown button" id="brown"></button>
         <button class="grey button" id="grey"></button>
-        
         <!-- Brush size -->
-        &nbsp;
-        <button class="button" id="smaller"><</button>
-        <button class="button" id="larger">></button>
-        
-        <!-- Printed brush px -->
+        <button class="brush-button" id="smaller"><div class="glyphicon glyphicon-minus" aria-hidden="true"></div></button>
+        <button class="brush-button" id="larger"><div class="glyphicon glyphicon-plus" aria-hidden="true"></div></button>
+        <div class="current-color-indicator" id="current-color"></div>
+	<!-- Printed brush px -->
         <div class = "brush-style" id="size"></div>
+	<button class="min-max-button" id="min"><div class="glyphicon glyphicon-minus-sign" aria-hidden="true"></div></button>
+        <button class="min-max-button" id="max"><div class="glyphicon glyphicon-plus-sign" aria-hidden="true"></div></button>
     </div>
-    
     <!-- Canvas -->
     <canvas class="draw" id="drawing"></canvas>
 </body>
-
 </html>
