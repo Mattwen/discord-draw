@@ -1,6 +1,13 @@
 # discord-draw
 Basic drawing application for Discord users.
 
+# Install using Docker Image
+
+    docker pull mattwen/discord-draw:latest
+    docker run --restart=always -p 8080:8080 -d mattwen/discord-draw
+
+Done!!
+
 git clone
 
     git clone https://github.com/Mattwen/discord-draw.git
