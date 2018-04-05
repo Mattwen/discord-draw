@@ -10,7 +10,7 @@ position: relative;
 #container canvas, #overlay {
   position: absolute;
 
-width: 675px;
+width: 665px;
 left:0;
 right:0;
 margin-left:auto;
@@ -21,7 +21,7 @@ margin-right:auto;
 .outline{
     border-top: none;
     padding: 15px;
-    padding-top: 5px;
+    padding-top: 0px;
     padding-bottom: 10px;
     background-color: black;
     -webkit-box-shadow: 0 8px 6px -6px black;
@@ -35,16 +35,13 @@ body, html{
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-
 }
 .draw {
    cursor: crosshair;
-
 }
 
 .draw:active {
     cursor: crosshair;
-
 }
 
 .white{
@@ -54,7 +51,6 @@ body, html{
     position: relative;
     top: 5px;
     display: inline-block;
-
 }
 
 .red{
@@ -64,7 +60,6 @@ body, html{
     position: relative;
     top: 5px;
     display: inline-block;
-
 }
 
 .black{
@@ -74,7 +69,6 @@ body, html{
     position: relative;
     top: 5px;
     display: inline-block;
-
 }
 
 .green{
@@ -183,29 +177,30 @@ body, html{
   display: inline-block;
   font-size: 12px;
   cursor: pointer;
-  padding: 8px 15px;
+  height: 30px;
+  width:30px;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: black;
-
+  top: 10px;
   border: none;
   border-radius: 50px;
 }
 
 .brush-button {
   display: inline-block;
-  padding: 8px 15px;
+  height: 30px;
+  width:30px;
   cursor: pointer;
 
   text-align: center;
-
   outline: none;
   background-color: #4d4d4d;
   color: white;
   border: none;
   border-radius: 3px;
-  right: 10px;
+
 }
 
 .button:hover {background-color: #d9d9d9}
@@ -229,16 +224,16 @@ body, html{
 .min-max-button{
   display: inline-block;
   height: 30px;
-  width: 30px;
+  width: 33px;
   cursor: pointer;
   padding-bottom: 0px;
   text-align: center;
-  padding-top:2px;
+  padding-top:0px;
   outline: none;
   background-color: #4d4d4d;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 3px;
   }
   
   .min-max-button:active {
@@ -249,8 +244,10 @@ body, html{
 }
 .current-color-indicator{
     height: 30px;
-    width: 20px;
+    width: 10px;
     position: relative;
     display: inline-block;
-    top: 10px;
+    top:10px;
+    border-radius: 3px;   
 }
+
